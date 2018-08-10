@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Testing Menu</string>
+    <string name="Item1">Item1</string>
+    <string name="Item2">Item2</string>
+    <string name="Item3">Item3</string>
+    <string name="studentId">Student Id</string>
+    <string name="studentName">Student Name</string>
+</resources>
