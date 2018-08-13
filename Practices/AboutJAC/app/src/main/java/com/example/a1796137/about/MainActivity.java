@@ -40,12 +40,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void renderLocation() {
+        // Create a Uri from an intent string. Use the result to create an Intent.
+        Uri jacLocationUri = Uri.parse("geo=45.4064035,-73.9461085?z=15");
 
+        // Create an Intent from gmmIntentUri. Set the action to ACTION_VIEW
+        Intent jacLocation = new Intent(Intent.ACTION_VIEW, jacLocationUri);
+
+        // Make the Intent explicit by setting the Google Maps package
+        jacLocation.setPackage("com.google.android.apps.maps");
+
+        // Attempt to start an activity that can handle the Intent
+        if (jacLocation.resolveActivity(getPackageManager()) != null) {
+            startActivity(jacLocation);
+        }
     }
 
     public void renderInfo() {
         Intent infoJac = new Intent(MainActivity.this, Info.class);
-//        intentToStartActivity.putExtra(Intent.EXTRA_TEXT, "Extra text");
+        // infoJac.putExtra(Intent.EXTRA_TEXT, "Extra text");
         startActivity(infoJac);
     }
 
