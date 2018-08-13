@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">intentEx</string>
+    <string name="btn1Text">Start new Activity</string>
+    <string name="btn2Text">Back to Main Activity</string>
+    <string name="btn3Text">Go to my Website</string>
+    <string name="someText2">
+        This text is in 2nd Activity
+    </string>
+    <string name="someText1">
+        This text is in Main Activity
+    </string>
+</resources>
