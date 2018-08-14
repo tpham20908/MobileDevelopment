@@ -41,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void renderLocation() {
         // Create a Uri from an intent string. Use the result to create an Intent.
-        Uri jacLocationUri = Uri.parse("geo=45.4064035,-73.9461085?z=15");
+//        Uri jacLocationUri = Uri.parse("geo=45.4064035,-73.9461085?z=15");
+        Uri jacLocationUri = Uri.parse("google.streetview:cbll=45.4064035,-73.9461085?z=15");
 
         // Create an Intent from gmmIntentUri. Set the action to ACTION_VIEW
         Intent jacLocation = new Intent(Intent.ACTION_VIEW, jacLocationUri);
