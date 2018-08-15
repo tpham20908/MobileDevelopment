@@ -19,6 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/email_input_prompt"
+        android:textColor="@color/promptTextColor"
         android:textSize="20sp"
         android:layout_above="@id/email_input"
         android:layout_centerHorizontal="true"
@@ -27,7 +28,7 @@
 
     <EditText
         android:id="@+id/email_input"
-        android:layout_width="256dp"
+        android:layout_width="298dp"
         android:layout_height="32dp"
         android:padding="4dp"
         android:layout_above="@id/btn_start"
@@ -41,6 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Start" />
+        android:text="Start"
+        android:onClick="startingTest"/>
 
 </RelativeLayout>
