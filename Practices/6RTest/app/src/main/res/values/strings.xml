@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">6RTest</string>
     <string name="title">SAAQ Class 6R Practice</string>
+    <string name="email_input_prompt">Enter your email address</string>
 </resources>

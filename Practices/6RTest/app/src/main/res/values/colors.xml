@@ -3,5 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="background">#9FAFBFDD</color>
+    <color name="appBackgroundColor">#00703B</color>
+    <color name="headerBackgroundColor">#D8D8BF</color>
+    <color name="headerTextColor">#00703B</color>
+    <color name="bodyBackgroundColor">#1D4F27</color>
+    <color name="bodyTextColor">#FFF</color>
 </resources>
