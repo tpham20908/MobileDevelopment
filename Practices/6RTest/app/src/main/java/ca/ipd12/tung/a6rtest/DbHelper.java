@@ -12,7 +12,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("create table participants (name text, score integer)");
+        sqLiteDatabase.execSQL("create table participants (email text, score integer)");
     }
 
     @Override
