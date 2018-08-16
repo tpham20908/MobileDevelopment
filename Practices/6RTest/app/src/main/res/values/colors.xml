@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#BF91D5BB</color>
+    <color name="colorPrimaryDark">#9A109955</color>
+    <color name="colorAccent">#D0E0FBBB</color>
     <color name="red">#EE1111</color>
     <color name="appBackgroundColor">#00703B</color>
-    <color name="headerBackgroundColor">#D8D8BF</color>
+    <color name="mcqColor">#D8D8BF</color>
     <color name="promptTextColor">#A0B0CB</color>
     <color name="bodyBackgroundColor">#1D4F27</color>
     <color name="bodyTextColor">#FFF</color>
