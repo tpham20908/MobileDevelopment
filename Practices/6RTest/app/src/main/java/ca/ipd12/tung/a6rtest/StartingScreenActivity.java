@@ -1,17 +1,21 @@
 package ca.ipd12.tung.a6rtest;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class StartingScreenActivity extends AppCompatActivity {
     HashMap<String, Integer> participants;
@@ -31,7 +35,8 @@ public class StartingScreenActivity extends AppCompatActivity {
 
         // evaluate email
         if (!matchPattern(email)) {
-            warning.setText("Invalid email address. Please try again");
+            Toast.makeText(StartingScreenActivity.this,"Enter valid e-mail!",Toast.LENGTH_LONG).show();
+            return;
         }
 
         // check if email already exists
@@ -45,11 +50,15 @@ public class StartingScreenActivity extends AppCompatActivity {
     }
 
     public boolean matchPattern(String email) {
-        return 
+        Pattern pattern = Patterns.EMAIL_ADDRESS;
+        return pattern.matcher(email).matches();
     }
 
     public void goToTest(String email) {
-
+        Intent testActivity = new Intent(StartingScreenActivity.this, TestActivity.class);
+        testActivity.putExtra("email", email);
+        testActivity.putExtra("score", participants.get(email));
+        startActivity(testActivity);
     }
 
     public void creatingNewParticipant(String email) {
