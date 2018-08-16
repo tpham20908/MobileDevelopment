@@ -11,7 +11,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import com.facebook.stetho.Stetho;
+
+public class MainActivity extends MutualMenu {
 
     String name, address, phone;
     long rowId;
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Stetho.initializeWithDefaults(this);
 
         fetchDataFromDB();
     }
@@ -44,11 +47,11 @@ public class MainActivity extends AppCompatActivity {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put("name", name);
-        values.put("address", address);
-        values.put("phone", phone);
+        values.put(FeedReaderContract.FeedEntry.COLUMN_NAME, name);
+        values.put(FeedReaderContract.FeedEntry.COLUMN_ADDRESS, address);
+        values.put(FeedReaderContract.FeedEntry.COLUMN_PHONE, phone);
 
-        rowId = db.insert("user", null, values);
+        rowId = db.insert(FeedReaderContract.FeedEntry.TABLE_USER, null, values);
 
         Log.i("Row Id", rowId + "");
 
@@ -63,7 +66,11 @@ public class MainActivity extends AppCompatActivity {
         MyDbHelper dbHelper = new MyDbHelper(this, "usersdb", null, 1);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        String[] columns = { "name", "address", "phone" };
+        String[] columns = {
+                FeedReaderContract.FeedEntry.COLUMN_NAME,
+                FeedReaderContract.FeedEntry.COLUMN_ADDRESS,
+                FeedReaderContract.FeedEntry.COLUMN_PHONE
+        };
         Cursor cursor = db.query("user", columns, null, null, null, null, null);
 
         cursor.moveToFirst();
@@ -84,9 +91,10 @@ public class MainActivity extends AppCompatActivity {
         showingInfo.putExtra("address", address);
         showingInfo.putExtra("phone", phone);
         startActivity(showingInfo);
-
+        /*
         Log.i("name", name);
         Log.i("address", address);
         Log.i("phone", phone);
+        */
     }
 }
