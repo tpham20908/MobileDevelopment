@@ -10,9 +10,16 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.OneItemViewHolder> {
 
-    String[] fruits = {"Apple", "Banana", "Carrot", "Mango", "Orange"};
+    ArrayList<String> fruits;
+    //String[] fruits;
+
+    public UserAdapter(ArrayList<String> fruits) {
+        this.fruits = fruits;
+    }
 
     @NonNull
     @Override
@@ -24,7 +31,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.OneItemViewHol
 
     @Override
     public void onBindViewHolder(@NonNull OneItemViewHolder oneItemViewHolder, final int i) {
-        oneItemViewHolder.tvInOneItem.setText(fruits[i]);
+        oneItemViewHolder.tvInOneItem.setText(Integer.toString(i+1) + ": " + fruits.get(i));
         oneItemViewHolder.singleItemParentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -35,7 +42,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.OneItemViewHol
 
     @Override
     public int getItemCount() {
-        return fruits.length;
+        return fruits.size();
     }
 
     class OneItemViewHolder extends RecyclerView.ViewHolder {

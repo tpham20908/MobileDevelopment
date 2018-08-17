@@ -12,7 +12,11 @@ import android.widget.TextView;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.OneItemViewHolder> {
 
-    String[] fruits = {"Apple", "Banana", "Carrot", "Mango", "Orange"};
+    String[] fruits;
+
+    public UserAdapter(String[] fruits) {
+        this.fruits = fruits;
+    }
 
     @NonNull
     @Override
