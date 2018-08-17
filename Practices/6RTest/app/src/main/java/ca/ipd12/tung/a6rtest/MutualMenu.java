@@ -1,5 +1,6 @@
 package ca.ipd12.tung.a6rtest;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -26,8 +27,23 @@ public class MutualMenu extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
         switch (itemId) {
-
+            case R.id.start:
+                goToStartingScreenActivity();
+                break;
+            case R.id.history:
+                goToHistoryActivity();
+                break;
         }
         return true;
+    }
+
+    private void goToStartingScreenActivity() {
+        Intent starting = new Intent(this, StartingScreenActivity.class);
+        startActivity(starting);
+    }
+
+    private void goToHistoryActivity() {
+        Intent history = new Intent(this, History.class);
+        startActivity(history);
     }
 }

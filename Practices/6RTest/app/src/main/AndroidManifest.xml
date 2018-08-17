@@ -10,18 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".StartingScreenActivity">
-
-        </activity>
-        <activity
-            android:name=".TestActivity"
-            android:parentActivityName=".StartingScreenActivity" />
-        <activity android:name=".MutualMenu" />
-        <activity android:name=".History">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".TestActivity"
+            android:parentActivityName=".StartingScreenActivity" />
+        <activity android:name=".MutualMenu" />
+
+        <activity android:name=".History">
         </activity>
     </application>
 
