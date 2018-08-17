@@ -9,4 +9,6 @@
     <color name="promptTextColor">#A0B0CB</color>
     <color name="bodyBackgroundColor">#1D4F27</color>
     <color name="bodyTextColor">#FFF</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>

@@ -2,14 +2,17 @@ package ca.ipd12.tung.a6rtest;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.facebook.stetho.Stetho;
+
 import java.util.List;
 
-public class TestActivity extends AppCompatActivity {
+public class TestActivity extends MutualMenu {
     String email;
     int score;
     private DbHelper dbHelper;
@@ -30,6 +33,7 @@ public class TestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
+        Stetho.initializeWithDefaults(this);
         // get and store email and score from starting screen activity
         email = getIntent().getStringExtra("email");
         getIntent().getIntExtra("score", score);
@@ -47,5 +51,7 @@ public class TestActivity extends AppCompatActivity {
 
         dbHelper = new DbHelper(this);
         questionList = dbHelper.getQuestionList();
+
+        Log.i("question", questionList.toString());
     }
 }

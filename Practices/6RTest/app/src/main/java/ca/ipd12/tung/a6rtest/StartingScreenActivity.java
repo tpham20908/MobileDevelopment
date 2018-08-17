@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-public class StartingScreenActivity extends AppCompatActivity {
+public class StartingScreenActivity extends MutualMenu {
     TextView warning;
 
     @Override
@@ -33,7 +33,7 @@ public class StartingScreenActivity extends AppCompatActivity {
 
         // evaluate email
         if (!matchPattern(email)) {
-            Toast.makeText(StartingScreenActivity.this,"Enter valid e-mail!",Toast.LENGTH_LONG).show();
+            Toast.makeText(StartingScreenActivity.this,"Invalid email address!",Toast.LENGTH_LONG).show();
         } else {
             goToTest(email);
         }
