@@ -1,0 +1,11 @@
+xml: per_item_view.xml	 with FrameLayout -> TextView
+java: UserAdapter	with dependencies implementation 	'com.android.support:recyclerview-v7:28.0.0-rc01'
+
+	inner class OneItemViewHolder extends RecyclerView.ViewHolder with TextView and FrameLayout
+	UserAdapter extends RecyclerView.Adapter<UserAdapter.OneItemViewHolder> and implements abstract methods
+							
+
+main-activity: FrameLayout - RecyclerView
+
+
+AWS Lambda: https://www.youtube.com/watch?v=71cd5XerKss

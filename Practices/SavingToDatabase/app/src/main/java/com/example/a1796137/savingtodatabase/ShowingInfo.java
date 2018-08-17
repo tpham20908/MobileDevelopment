@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class ShowingInfo extends AppCompatActivity {
+public class ShowingInfo extends MutualMenu {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
