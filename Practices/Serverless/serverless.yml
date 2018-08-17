@@ -1,0 +1,45 @@
+service: lambda-test # NOTE: update this with your service name
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+     - http:
+         path: /
+         method: get
+  imageResize:
+    handler: handler.imageResize
+    events:
+     - http:
+         path: /imageResize
+         method: get
+  quiz1:
+    handler: handler.quiz1
+    events:
+     - http:
+         path: /quiz1
+         method: get
+  quiz2:
+    handler: handler.quiz2
+    events:
+     - http:
+         path: /quiz2
+         method: get
+  quiz3:
+    handler: handler.quiz3
+    events:
+     - http:
+         path: /quiz3
+         method: get
+  quiz4:
+    handler: handler.quiz4
+    events:
+     - http:
+         path: /quiz4
+         method: get
+         
