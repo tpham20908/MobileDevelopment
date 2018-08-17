@@ -15,7 +15,7 @@ import ca.ipd12.tung.a6rtest.TestContract.*;
 
 public class DbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "6rtest.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 3;
     private SQLiteDatabase db;
 
     public DbHelper(Context context) {
@@ -45,6 +45,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
         db.execSQL(SQL_CREATE_QUESTIONS_TABLE);
         db.execSQL(SQL_CREATE_PARTICIPANTS_TABLE);
+        fillQuestionsTable();
     }
 
     @Override
@@ -66,16 +67,52 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     private void fillQuestionsTable() {
-        Question q1 = new Question(
-          "Holders of learner or probationary licenses in Quebec are not permitted to ride with a blood-alcohol concentration of more than...?", "02", "03", "01", "00", 4
+        List<Question> questionList = new ArrayList<Question>();
+        questionList.add(
+            new Question("Holders of learner or probationary licenses in Quebec are not permitted to ride with a blood-alcohol concentration of more than...?", "02", "03", "01", "00", 4)
         );
-
-        Question q2 = new Question(
-                "As you put your transmission into higher gear, you should release your clutch...?", "Similtaneously", "Any of these", "Beforehand", "Afterward", 1
+        questionList.add(
+            new Question("As you put your transmission into higher gear, you should release your clutch...?", "Similtaneously", "Any of these", "Beforehand", "Afterward", 1)
         );
+        questionList.add(
+            new Question("As you ride, your knees should be...?", "Kept as high up as possible", "Hugging the gas tank", "Sticking out 45°", "Sticking out 90°", 2)
+        );
+        questionList.add(
+            new Question("Where would you usually find the engine emergency cut-off switch on your motorcycle?", "Underneath the seat", "On the left handlebar", "On the right handlebar", "Below the tank", 3)
+        );
+        questionList.add(
+            new Question("A tachometer on your motorcycle will show...?", "Total distance travelled since new", "Total distance travelled that day", "Engine revolutions", "Speed", 3)
+        );
+        /*
+        questionList.add(
+                new Question("", "", "", "", "", )
+        );
+        questionList.add(
+                new Question("", "", "", "", "", )
+        );
+        questionList.add(
+                new Question("", "", "", "", "", )
+        );
+        questionList.add(
+                new Question("", "", "", "", "", )
+        );
+        questionList.add(
+                new Question("", "", "", "", "", )
+        );
+        questionList.add(
+                new Question("", "", "", "", "", )
+        );
+        questionList.add(
+                new Question("", "", "", "", "", )
+        );
+        questionList.add(
+                new Question("", "", "", "", "", )
+        );
+        */
 
-        addQuestions(q1);
-        addQuestions(q2);
+        for (Question question : questionList) {
+            addQuestions(question);
+        }
     }
 
     public List<Question> getQuestionList() {
