@@ -27,4 +27,9 @@ public class Participant {
     public void setScore(int score) {
         this.score = score;
     }
+
+    @Override
+    public String toString() {
+        return "Email: " + email + " | Score: " + score;
+    }
 }

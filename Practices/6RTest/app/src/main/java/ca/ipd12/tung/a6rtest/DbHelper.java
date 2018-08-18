@@ -15,7 +15,7 @@ import ca.ipd12.tung.a6rtest.TestContract.*;
 
 public class DbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "6rtest.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
     private SQLiteDatabase db;
 
     public DbHelper(Context context) {
@@ -46,6 +46,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_QUESTIONS_TABLE);
         db.execSQL(SQL_CREATE_PARTICIPANTS_TABLE);
         fillQuestionsTable();
+        fillParticipant();
     }
 
     @Override
@@ -83,32 +84,21 @@ public class DbHelper extends SQLiteOpenHelper {
         questionList.add(
             new Question("A tachometer on your motorcycle will show...?", "Total distance travelled since new", "Total distance travelled that day", "Engine revolutions", "Speed", 3)
         );
-        /*
         questionList.add(
-                new Question("", "", "", "", "", )
+            new Question("", "","", "", "", 0)
         );
         questionList.add(
-                new Question("", "", "", "", "", )
+                new Question("", "","", "", "", 0)
         );
         questionList.add(
-                new Question("", "", "", "", "", )
+                new Question("", "","", "", "", 0)
         );
         questionList.add(
-                new Question("", "", "", "", "", )
+                new Question("", "","", "", "", 0)
         );
         questionList.add(
-                new Question("", "", "", "", "", )
+                new Question("", "","", "", "", 0)
         );
-        questionList.add(
-                new Question("", "", "", "", "", )
-        );
-        questionList.add(
-                new Question("", "", "", "", "", )
-        );
-        questionList.add(
-                new Question("", "", "", "", "", )
-        );
-        */
 
         for (Question question : questionList) {
             addQuestions(question);
@@ -140,10 +130,11 @@ public class DbHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put(TestTable.COLUMN_EMAIL, participant.getEmail());
         cv.put(TestTable.COLUMN_SCORE, participant.getScore());
+        db.insert(TestTable.TABLE_PARTICIPANTS, null, cv);
     }
 
-    public List<Participant> getParticipantList() {
-        List<Participant> participantList = new ArrayList<>();
+    public ArrayList<String> getParticipantList() {
+        ArrayList<String> participantList = new ArrayList<>();
         db = getReadableDatabase();
         Cursor c = db.rawQuery("SELECT * FROM " + TestTable.TABLE_PARTICIPANTS, null);
         if (c.moveToFirst()) {
@@ -151,11 +142,18 @@ public class DbHelper extends SQLiteOpenHelper {
                 Participant p = new Participant();
                 p.setEmail(c.getString(c.getColumnIndex(TestTable.COLUMN_EMAIL)));
                 p.setScore(c.getInt(c.getColumnIndex(TestTable.COLUMN_SCORE)));
-                participantList.add(p);
+                participantList.add(p.toString());
             } while (c.moveToNext());
         }
         c.close();
 
         return participantList;
+    }
+
+    public void fillParticipant() {
+        Participant p1 = new Participant("email1@email.ca", 8);
+        Participant p2 = new Participant("email2@email.ca", 9);
+        addParticipant(p1);
+        addParticipant(p2);
     }
 }

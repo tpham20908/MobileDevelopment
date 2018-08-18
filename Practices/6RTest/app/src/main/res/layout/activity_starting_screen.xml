@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/bodyTextColor"
         android:text="@string/title"
-        android:textSize="32sp"
+        android:textSize="30sp"
         />
 
     <TextView

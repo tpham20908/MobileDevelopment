@@ -56,7 +56,7 @@ public class TestActivity extends MutualMenu {
         setContentView(R.layout.activity_test);
         Stetho.initializeWithDefaults(this);
 
-        // get and store email and score from starting sctereen activity
+        // get and store email and score from starting screen activity
         email = getIntent().getStringExtra("email");
         getIntent().getIntExtra("score", score);
 
@@ -77,9 +77,9 @@ public class TestActivity extends MutualMenu {
         btnConfirm = findViewById(R.id.btn_confirm);
 
         dbHelper = new DbHelper(this);
-        //questionList = dbHelper.getQuestionList();
-        questionList = new ArrayList<>();
-        setUpQuestionList();
+        questionList = dbHelper.getQuestionList();
+        // questionList = new ArrayList<>();
+        // setUpQuestionList();
 
         textColorDefaultBtn = radioBtn1.getTextColors();
         questionCountTotal = questionList.size();
