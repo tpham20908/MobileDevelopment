@@ -1,14 +1,19 @@
 package ca.ipd12.tung.a6rtest;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.stetho.Stetho;
 
@@ -28,6 +33,7 @@ public class TestActivity extends MutualMenu {
 
     private DbHelper dbHelper;
     private List<Question> questionList;
+    private ColorStateList textColorDefaultBtn;
 
     private TextView tvEmail;
     private TextView tvScore;
@@ -40,8 +46,6 @@ public class TestActivity extends MutualMenu {
     private RadioButton radioBtn3;
     private RadioButton radioBtn4;
     private Button btnConfirm;
-
-    private ColorStateList textColorDefaultBtn;
 
     private String email;
     private int score;
@@ -64,7 +68,6 @@ public class TestActivity extends MutualMenu {
         tvEmail = findViewById(R.id.tv_email);
         tvEmail.append(" " + email);
         tvScore = findViewById(R.id.tv_score);
-        tvScore.append(" " + score);
 
         tvQuestionCount = findViewById(R.id.tv_question_count);
         tvCountdown = findViewById(R.id.tv_countdown);
@@ -78,8 +81,8 @@ public class TestActivity extends MutualMenu {
 
         dbHelper = new DbHelper(this);
         questionList = dbHelper.getQuestionList();
-        // questionList = new ArrayList<>();
-        // setUpQuestionList();
+        //questionList = new ArrayList<>();
+        //setUpQuestionList();
 
         textColorDefaultBtn = radioBtn1.getTextColors();
         questionCountTotal = questionList.size();
@@ -87,6 +90,66 @@ public class TestActivity extends MutualMenu {
         Collections.shuffle(questionList);
 
         showNextQuestion();
+    }
+
+    public void clickConfirm(View view) {
+        if (!answered) {
+            if (radioBtn1.isChecked() || radioBtn2.isChecked()
+                    || radioBtn3.isChecked() || radioBtn4.isChecked()) {
+                checkAnswer();
+            } else {
+                Toast.makeText(TestActivity.this, "Please select an answer",
+                        Toast.LENGTH_LONG).show();
+            }
+        } else {
+            showNextQuestion();
+        }
+    }
+
+    private void checkAnswer() {
+        answered = true;
+
+        RadioButton rbSelected = findViewById(radioBtnGroup.getCheckedRadioButtonId());
+        int answerNr = radioBtnGroup.indexOfChild(rbSelected) + 1;
+
+        if (answerNr == currentQuestion.getAnswerNr()) {
+            score++;
+            tvScore.setText("Score: " + score);
+        }
+
+        showSolution();
+    }
+
+    private void showSolution() {
+        radioBtn1.setTextColor(Color.RED);
+        radioBtn2.setTextColor(Color.RED);
+        radioBtn3.setTextColor(Color.RED);
+        radioBtn4.setTextColor(Color.RED);
+
+        switch (currentQuestion.getAnswerNr()) {
+            case 1:
+                radioBtn1.setTextColor(Color.GREEN);
+                tvQuestion.setText("Answer 1 is correct");
+                break;
+            case 2:
+                radioBtn2.setTextColor(Color.GREEN);
+                tvQuestion.setText("Answer 2 is correct");
+                break;
+            case 3:
+                radioBtn3.setTextColor(Color.GREEN);
+                tvQuestion.setText("Answer 3 is correct");
+                break;
+            case 4:
+                radioBtn4.setTextColor(Color.GREEN);
+                tvQuestion.setText("Answer 4 is correct");
+                break;
+        }
+
+        if (questionCounter < questionCountTotal) {
+            btnConfirm.setText("Next");
+        } else {
+            btnConfirm.setText("Finish");
+        }
     }
 
     private void showNextQuestion() {
@@ -106,7 +169,7 @@ public class TestActivity extends MutualMenu {
             radioBtn4.setText(currentQuestion.getOption4());
 
             questionCounter++;
-            tvQuestionCount.append(" " + questionCounter + "/" + questionCountTotal);
+            tvQuestionCount.setText("Question: " + questionCounter + "/" + questionCountTotal);
             answered = false;
         } else {
             finishTest();
@@ -114,7 +177,25 @@ public class TestActivity extends MutualMenu {
     }
 
     private void finishTest() {
+        dbHelper.addParticipant(new Participant(email, score));
+        sendEmailToParticipant();
         finish();
+    }
+
+    public void quitTest(View view) {
+        dbHelper.addParticipant(new Participant(email, score));
+        sendEmailToParticipant();
+        System.exit(0);
+    }
+
+    private void sendEmailToParticipant() {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setData(Uri.parse("mailto:"));
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[] {email});
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Result on 6RTest");
+        intent.putExtra(Intent.EXTRA_TEXT, "You scored " + score + " on 6RTest app.\nThank you for participating!!");
+        startActivity(Intent.createChooser(intent, "Choose an Email client :"));
     }
 
     public void setUpQuestionList() {

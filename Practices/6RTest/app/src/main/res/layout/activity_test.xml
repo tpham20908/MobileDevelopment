@@ -23,7 +23,7 @@
         android:textColor="@color/bodyTextColor"
         android:textSize="20sp"
         android:layout_below="@id/tv_email"
-        android:text="Score: "/>
+        android:text="@string/score"/>
 
     <TextView
         android:id="@+id/tv_question_count"
@@ -48,7 +48,7 @@
         android:id="@+id/tv_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
+        android:textSize="19sp"
         android:text="Question will be here \n Question will be here"
         android:textColor="@color/colorAccent"
         android:layout_marginBottom="16dp"
@@ -93,11 +93,24 @@
         android:id="@+id/btn_confirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:layout_below="@id/radio_group"
         android:layout_marginTop="24dp"
         android:text="Confirm"
         android:background="@color/colorPrimary"
-        android:textColor="@color/colorAccent"/>
+        android:textColor="@color/colorAccent"
+        android:onClick="clickConfirm"/>
+
+    <Button
+        android:id="@+id/btn_quit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_below="@id/btn_confirm"
+        android:layout_marginTop="16dp"
+        android:text="Exit"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorAccent"
+        android:onClick="quitTest"/>
 
 </RelativeLayout>

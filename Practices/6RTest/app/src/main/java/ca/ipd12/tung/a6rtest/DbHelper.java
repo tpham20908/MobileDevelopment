@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 
@@ -15,7 +17,7 @@ import ca.ipd12.tung.a6rtest.TestContract.*;
 
 public class DbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "6rtest.db";
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 6;
     private SQLiteDatabase db;
 
     public DbHelper(Context context) {
@@ -85,19 +87,19 @@ public class DbHelper extends SQLiteOpenHelper {
             new Question("A tachometer on your motorcycle will show...?", "Total distance travelled since new", "Total distance travelled that day", "Engine revolutions", "Speed", 3)
         );
         questionList.add(
-            new Question("", "","", "", "", 0)
+            new Question("When you are taking a curve, you should be focused on...?", "The apex","The exit", "The centre line", "The road in front of you", 2)
         );
         questionList.add(
-                new Question("", "","", "", "", 0)
+                new Question("In normal riding, the ball of your right hand should be where, in relation to the throttle?", "Slightly below it","Level with it", "Any of these", "Slightly above it", 1)
         );
         questionList.add(
-                new Question("", "","", "", "", 0)
+                new Question("The choke on a motorcycle is used for what?", "Improving fuel consumption","Accelerating", "Starting from cold", "Engine braking", 3)
         );
         questionList.add(
-                new Question("", "","", "", "", 0)
+                new Question("When you're passing another vehicle, you shift from 3rd to 5th gear, missing out 4th. What effect will this have on the time it takes you to pass?", "Considerably increase","Considerably decrease", "It will stay the same", "Any of these depending on conditions", 1)
         );
         questionList.add(
-                new Question("", "","", "", "", 0)
+                new Question("You should release the clutch when changing gear...?", "Sharply","Gradually", "Slowly", "In jerk", 2)
         );
 
         for (Question question : questionList) {
@@ -146,6 +148,7 @@ public class DbHelper extends SQLiteOpenHelper {
             } while (c.moveToNext());
         }
         c.close();
+        Collections.reverse(participantList);
 
         return participantList;
     }
