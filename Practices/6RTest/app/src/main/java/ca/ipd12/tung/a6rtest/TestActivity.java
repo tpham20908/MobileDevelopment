@@ -33,6 +33,7 @@ import java.util.Locale;
 
 public class TestActivity extends MutualMenu {
     public static final long COUNTDOWN_IN_MILLIS = 60000;
+    String strResponse;
 
     private DbHelper dbHelper;
     private List<Question> questionList;
@@ -69,7 +70,8 @@ public class TestActivity extends MutualMenu {
 
         // get and store email and score from starting screen activity
         email = getIntent().getStringExtra("email");
-        getIntent().getIntExtra("score", score);
+        strResponse = getIntent().getStringExtra("strResponse");
+        Log.i("strResponse", strResponse);
 
         // binding elements-variables
         tvEmail = findViewById(R.id.tv_email);
@@ -86,6 +88,7 @@ public class TestActivity extends MutualMenu {
         radioBtn4 = findViewById(R.id.radio_btn4);
         btnConfirm = findViewById(R.id.btn_confirm);
 
+        /*
         dbHelper = new DbHelper(this);
         //questionList = dbHelper.getQuestionList();
         questionList = new ArrayList<>();
@@ -99,6 +102,7 @@ public class TestActivity extends MutualMenu {
         Collections.shuffle(questionList);
 
         showNextQuestion();
+        */
     }
 
     public void clickConfirm(View view) {
