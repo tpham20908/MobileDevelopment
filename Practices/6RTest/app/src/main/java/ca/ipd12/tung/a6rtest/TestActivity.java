@@ -68,10 +68,9 @@ public class TestActivity extends MutualMenu {
         setContentView(R.layout.activity_test);
         Stetho.initializeWithDefaults(this);
 
-        // get and store email and score from starting screen activity
+        // get and store email and api response string from starting screen activity
         email = getIntent().getStringExtra("email");
         strResponse = getIntent().getStringExtra("strResponse");
-        Log.i("strResponse", strResponse);
 
         // binding elements-variables
         tvEmail = findViewById(R.id.tv_email);
@@ -88,11 +87,11 @@ public class TestActivity extends MutualMenu {
         radioBtn4 = findViewById(R.id.radio_btn4);
         btnConfirm = findViewById(R.id.btn_confirm);
 
-        /*
+
         dbHelper = new DbHelper(this);
         //questionList = dbHelper.getQuestionList();
         questionList = new ArrayList<>();
-        setUpQuestionList();
+        setUpQuestionList(strResponse);
 
         textColorDefaultBtn = radioBtn1.getTextColors();
         textColorDefaultCd = tvCountdown.getTextColors();
@@ -102,7 +101,7 @@ public class TestActivity extends MutualMenu {
         Collections.shuffle(questionList);
 
         showNextQuestion();
-        */
+
     }
 
     public void clickConfirm(View view) {
@@ -244,12 +243,30 @@ public class TestActivity extends MutualMenu {
         startActivity(Intent.createChooser(intent, "Choose an Email client :"));
     }
 
-    public void setUpQuestionList() {
-        URL apiUrl;
+    public void setUpQuestionList(String strResponse) {
+        JSONArray jsonarray = null;
         try {
-            apiUrl = new URL("https://oayptvvg0a.execute-api.us-east-1.amazonaws.com/dev/quiz1");
-            new FetchDataFromApi().execute(apiUrl);
-        } catch (MalformedURLException e) {
+            jsonarray = new JSONArray(strResponse);
+            for (int i = 0; i < jsonarray.length(); i++) {
+                JSONObject jsonobject = jsonarray.getJSONObject(i);
+                String question = jsonobject.getString("question");
+                String option1 = jsonobject.getString("option1");
+                String option2 = jsonobject.getString("option2");
+                String option3 = jsonobject.getString("option3");
+                String option4 = jsonobject.getString("option4");
+                int answerNr = jsonobject.getInt("answerNr");
+
+                Question q = new Question();
+                q.setQuestion(question);
+                q.setOption1(option1);
+                q.setOption2(option2);
+                q.setOption3(option3);
+                q.setOption4(option4);
+                q.setAnswerNr(answerNr);
+
+                questionList.add(q);
+            }
+        } catch (JSONException e) {
             e.printStackTrace();
         }
     }

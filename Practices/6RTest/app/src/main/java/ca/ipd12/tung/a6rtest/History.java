@@ -22,7 +22,6 @@ public class History extends MutualMenu {
 
 
     public void initRecyclerView() {
-        // String[] fruits = {"Apple", "Banana", "Carrot", "Mango", "Orange"};
         list = dbHelper.getParticipantList();
         RecyclerView myRcView = findViewById(R.id.rc_view);
         UserAdapter userAdapter = new UserAdapter(list);

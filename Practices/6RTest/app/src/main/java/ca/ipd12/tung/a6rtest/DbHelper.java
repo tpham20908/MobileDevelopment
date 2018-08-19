@@ -129,6 +129,7 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     public void addParticipant(Participant participant) {
+        db = getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(TestTable.COLUMN_EMAIL, participant.getEmail());
         cv.put(TestTable.COLUMN_SCORE, participant.getScore());
