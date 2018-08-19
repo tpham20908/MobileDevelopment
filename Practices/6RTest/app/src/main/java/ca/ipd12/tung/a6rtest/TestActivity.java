@@ -5,6 +5,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,12 +29,18 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 public class TestActivity extends MutualMenu {
+    public static final long COUNTDOWN_IN_MILLIS = 60000;
 
     private DbHelper dbHelper;
     private List<Question> questionList;
+    private CountDownTimer countDownTimer;
+    private long timeLeftInMillis;
+
     private ColorStateList textColorDefaultBtn;
+    private ColorStateList textColorDefaultCd;
 
     private TextView tvEmail;
     private TextView tvScore;
@@ -51,8 +58,8 @@ public class TestActivity extends MutualMenu {
     private int score;
     private int questionCounter;
     private int questionCountTotal;
-    private Question currentQuestion;
     private boolean answered;
+    private Question currentQuestion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,11 +87,13 @@ public class TestActivity extends MutualMenu {
         btnConfirm = findViewById(R.id.btn_confirm);
 
         dbHelper = new DbHelper(this);
-        questionList = dbHelper.getQuestionList();
-        //questionList = new ArrayList<>();
-        //setUpQuestionList();
+        //questionList = dbHelper.getQuestionList();
+        questionList = new ArrayList<>();
+        setUpQuestionList();
 
         textColorDefaultBtn = radioBtn1.getTextColors();
+        textColorDefaultCd = tvCountdown.getTextColors();
+
         questionCountTotal = questionList.size();
 
         Collections.shuffle(questionList);
@@ -108,6 +117,7 @@ public class TestActivity extends MutualMenu {
 
     private void checkAnswer() {
         answered = true;
+        countDownTimer.cancel();
 
         RadioButton rbSelected = findViewById(radioBtnGroup.getCheckedRadioButtonId());
         int answerNr = radioBtnGroup.indexOfChild(rbSelected) + 1;
@@ -153,6 +163,9 @@ public class TestActivity extends MutualMenu {
     }
 
     private void showNextQuestion() {
+        timeLeftInMillis = COUNTDOWN_IN_MILLIS;
+        startCountDown();
+
         radioBtn1.setTextColor(textColorDefaultBtn);
         radioBtn2.setTextColor(textColorDefaultBtn);
         radioBtn3.setTextColor(textColorDefaultBtn);
@@ -176,6 +189,35 @@ public class TestActivity extends MutualMenu {
         }
     }
 
+    private void startCountDown() {
+        countDownTimer = new CountDownTimer(timeLeftInMillis, 1000) {
+            @Override
+            public void onTick(long l) {
+                timeLeftInMillis = l;
+                updateCountDownText();
+            }
+
+            @Override
+            public void onFinish() {
+                timeLeftInMillis = 0;
+                updateCountDownText();
+                checkAnswer();
+            }
+        }.start();
+    }
+
+    private void updateCountDownText() {
+        int seconds = (int) (timeLeftInMillis / 1000) % 60;
+        String timeFormatted = String.format(Locale.getDefault(), "00:%02d", seconds);
+        tvCountdown.setText(timeFormatted);
+
+        if ((timeLeftInMillis < 10000)) {
+            tvCountdown.setTextColor(Color.RED);
+        } else {
+            tvCountdown.setTextColor(textColorDefaultCd);
+        }
+    }
+
     private void finishTest() {
         dbHelper.addParticipant(new Participant(email, score));
         sendEmailToParticipant();
@@ -184,7 +226,7 @@ public class TestActivity extends MutualMenu {
 
     public void quitTest(View view) {
         dbHelper.addParticipant(new Participant(email, score));
-        sendEmailToParticipant();
+        //sendEmailToParticipant();
         System.exit(0);
     }
 
@@ -222,6 +264,7 @@ public class TestActivity extends MutualMenu {
         }
         @Override
         protected void onPostExecute(String s) {
+            super.onPostExecute(s);
             JSONArray jsonarray = null;
             try {
                  jsonarray = new JSONArray(s);
@@ -247,6 +290,14 @@ public class TestActivity extends MutualMenu {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
         }
     }
 }
