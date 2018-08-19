@@ -23,6 +23,7 @@
         android:textColor="@color/bodyTextColor"
         android:textSize="20sp"
         android:layout_below="@id/tv_email"
+        android:freezesText="true"
         android:text="@string/score"/>
 
     <TextView
@@ -32,7 +33,8 @@
         android:textSize="20sp"
         android:textColor="@color/bodyTextColor"
         android:text="@string/question_count"
-        android:layout_below="@id/tv_score"/>
+        android:layout_below="@id/tv_score"
+        android:freezesText="true"/>
 
     <TextView
         android:id="@+id/tv_countdown"
@@ -42,6 +44,7 @@
         android:layout_alignParentEnd="true"
         android:textSize="40sp"
         android:layout_below="@id/tv_email"
+        android:freezesText="true"
         android:text="00:59"/>
 
     <TextView
@@ -52,7 +55,8 @@
         android:text="Question will be here \n Question will be here"
         android:textColor="@color/colorAccent"
         android:layout_marginBottom="16dp"
-        android:layout_above="@id/radio_group"/>
+        android:layout_above="@id/radio_group"
+        android:freezesText="true"/>
 
     <RadioGroup
         android:id="@+id/radio_group"
@@ -65,28 +69,32 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="@color/colorAccent"
-            android:text="Option 1"/>
+            android:text="Option 1"
+            android:freezesText="true"/>
         <RadioButton
             android:id="@+id/radio_btn2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="@color/colorAccent"
-            android:text="Option 1"/>
+            android:text="Option 1"
+            android:freezesText="true"/>
         <RadioButton
             android:id="@+id/radio_btn3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="@color/colorAccent"
-            android:text="Option 1"/>
+            android:text="Option 1"
+            android:freezesText="true"/>
         <RadioButton
             android:id="@+id/radio_btn4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="@color/colorAccent"
-            android:text="Option 1"/>
+            android:text="Option 1"
+            android:freezesText="true"/>
     </RadioGroup>
 
     <Button
@@ -99,7 +107,8 @@
         android:text="Confirm"
         android:background="@color/colorPrimary"
         android:textColor="@color/colorAccent"
-        android:onClick="clickConfirm"/>
+        android:onClick="clickConfirm"
+        android:freezesText="true"/>
 
     <Button
         android:id="@+id/btn_quit"

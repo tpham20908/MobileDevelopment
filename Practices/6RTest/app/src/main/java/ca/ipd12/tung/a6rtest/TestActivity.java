@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.CountDownTimer;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,14 +37,7 @@ public class TestActivity extends MutualMenu {
     public final int NUMBER_OF_QUESTION = 10;
     String strResponse;
 
-    private DbHelper dbHelper;
-    private List<Question> questionList;
-    private CountDownTimer countDownTimer;
-    private long timeLeftInMillis;
-
-    private ColorStateList textColorDefaultBtn;
-    private ColorStateList textColorDefaultCd;
-
+    // These variables will be assigned to (View) elements in onCreate
     private TextView tvEmail;
     private TextView tvScore;
     private TextView tvQuestionCount;
@@ -56,12 +50,26 @@ public class TestActivity extends MutualMenu {
     private RadioButton radioBtn4;
     private Button btnConfirm;
 
+    // These variables will be manipulated while running app
     private String email;
     private int score;
     private int questionCounter;
     private int questionCountTotal;
     private boolean answered;
     private Question currentQuestion;
+    private DbHelper dbHelper;
+    private ArrayList<Question> questionList;
+    private CountDownTimer countDownTimer;
+    private long timeLeftInMillis;
+    private ColorStateList textColorDefaultBtn;
+    private ColorStateList textColorDefaultCd;
+
+    // These variables will be used on onSaveInstanceState
+    public final String KEY_SCORE = "keyScore";
+    public final String KEY_QUESTION_COUNTER = "keyQuestionCounter";
+    public final String KEY_TIME_LEFT_IN_MILLIS = "keyTimeLeftInMillis";
+    public final String KEY_ANSWERED = "keyAnswer";
+    public final String KEY_QUESTION_LIST = "keyQuestionList";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,20 +95,36 @@ public class TestActivity extends MutualMenu {
         radioBtn3 = findViewById(R.id.radio_btn3);
         radioBtn4 = findViewById(R.id.radio_btn4);
         btnConfirm = findViewById(R.id.btn_confirm);
-
-        dbHelper = new DbHelper(this);
-        //questionList = dbHelper.getQuestionList();
-        questionList = new ArrayList<>();
-        setUpQuestionList(strResponse);
-
         textColorDefaultBtn = radioBtn1.getTextColors();
         textColorDefaultCd = tvCountdown.getTextColors();
 
-        Collections.shuffle(questionList);
-        questionList = questionList.subList(0, NUMBER_OF_QUESTION);
-        questionCountTotal = questionList.size();
+        dbHelper = new DbHelper(this);
+        //questionList = dbHelper.getQuestionList();
+        questionList = new ArrayList<Question>();
 
-        showNextQuestion();
+        // handle device rotation case
+        if (savedInstanceState == null) {
+            setUpQuestionList(strResponse);
+            Collections.shuffle(questionList);
+            questionList = new ArrayList<>(questionList.subList(0, NUMBER_OF_QUESTION));
+            questionCountTotal = questionList.size();
+            showNextQuestion();
+        } else {
+            questionList = savedInstanceState.getParcelableArrayList(KEY_QUESTION_LIST);
+            questionCountTotal = questionList.size();
+            questionCounter = savedInstanceState.getInt(KEY_QUESTION_COUNTER);
+            currentQuestion = questionList.get(questionCounter - 1);
+            score = savedInstanceState.getInt(KEY_SCORE);
+            timeLeftInMillis = savedInstanceState.getLong(KEY_TIME_LEFT_IN_MILLIS);
+            answered = savedInstanceState.getBoolean(KEY_ANSWERED);
+
+            if (!answered) {
+                startCountDown();
+            } else {
+                updateCountDownText();
+                showSolution();
+            }
+        }
     }
 
     public void clickConfirm(View view) {
@@ -270,47 +294,14 @@ public class TestActivity extends MutualMenu {
         }
     }
 
-    public class FetchDataFromApi extends AsyncTask<URL, Void, String> {
-        @Override
-        protected String doInBackground(URL... urls) {
-            URL myUrl = urls[0];
-            String response = "";
-            try {
-                response = NetworkUtility.getResponseFromHttpUrl(myUrl);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return response;
-        }
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            JSONArray jsonarray = null;
-            try {
-                 jsonarray = new JSONArray(s);
-                for (int i = 0; i < jsonarray.length(); i++) {
-                    JSONObject jsonobject = jsonarray.getJSONObject(i);
-                    String question = jsonobject.getString("question");
-                    String option1 = jsonobject.getString("option1");
-                    String option2 = jsonobject.getString("option2");
-                    String option3 = jsonobject.getString("option3");
-                    String option4 = jsonobject.getString("option4");
-                    int answerNr = jsonobject.getInt("answerNr");
-
-                    Question q = new Question();
-                    q.setQuestion(question);
-                    q.setOption1(option1);
-                    q.setOption2(option2);
-                    q.setOption3(option3);
-                    q.setOption4(option4);
-                    q.setAnswerNr(answerNr);
-
-                    questionList.add(q);
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(KEY_SCORE, score);
+        outState.putInt(KEY_QUESTION_COUNTER, questionCounter);
+        outState.putLong(KEY_TIME_LEFT_IN_MILLIS, timeLeftInMillis);
+        outState.putBoolean(KEY_ANSWERED, answered);
+        outState.putParcelableArrayList(KEY_QUESTION_LIST, questionList);
     }
 
     @Override
