@@ -1,0 +1,13 @@
+Installation: 		npm install -g serverless
+Creating: 		serverless create
+Templating: 		serverless create -t aws-nodejs
+Making event in (serverless.yml file) function > hello:
+			events:
+			  - http:
+			     path: /
+			     method: get
+Making your own function in handler.js
+
+AWS Credential:		serverless config credentials provider aws --key [AWSKey] --secret [AWSsecretKey]
+Deployment:		serverless deploy (get https endpoint in cmd)
+Deploying stage:	serverless deploy --stage production		
