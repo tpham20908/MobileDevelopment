@@ -32,7 +32,8 @@ import java.util.List;
 import java.util.Locale;
 
 public class TestActivity extends MutualMenu {
-    public static final long COUNTDOWN_IN_MILLIS = 60000;
+    public final long COUNTDOWN_IN_MILLIS = 60000;
+    public final int NUMBER_OF_QUESTION = 10;
     String strResponse;
 
     private DbHelper dbHelper;
@@ -87,7 +88,6 @@ public class TestActivity extends MutualMenu {
         radioBtn4 = findViewById(R.id.radio_btn4);
         btnConfirm = findViewById(R.id.btn_confirm);
 
-
         dbHelper = new DbHelper(this);
         //questionList = dbHelper.getQuestionList();
         questionList = new ArrayList<>();
@@ -96,12 +96,11 @@ public class TestActivity extends MutualMenu {
         textColorDefaultBtn = radioBtn1.getTextColors();
         textColorDefaultCd = tvCountdown.getTextColors();
 
+        Collections.shuffle(questionList);
+        questionList = questionList.subList(0, NUMBER_OF_QUESTION);
         questionCountTotal = questionList.size();
 
-        Collections.shuffle(questionList);
-
         showNextQuestion();
-
     }
 
     public void clickConfirm(View view) {
