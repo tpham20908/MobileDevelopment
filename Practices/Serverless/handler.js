@@ -767,244 +767,244 @@ module.exports.quiz4 = async (event, context) => {
     statusCode: 200,
     body: JSON.stringify([
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "Which of these materials is not suitable for your motorcycle jacket?",
+        option1: "Fleece",
+        option2: "Leather",
+        option3: "Kevlar",
+        option4: "Cordura",
+        answerNr: 1
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "You're riding in fog and the tail lights of the vehicle ahead disappear. What should you do?",
+        option1: "Pull off the road and wait for the fog to clear",
+        option2: "Speed up until you see the tail lights again",
+        option3: "Reduce your speed",
+        option4: "Turn on your main beam to look for the car ahead",
+        answerNr: 1
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "You're travelling on a road you know well in good conditions and low traffic at night. Your speed should be...?",
+        option1: "Lower than in the daytime",
+        option2: "Whichever of these you judge best",
+        option3: "The same as in the daytime",
+        option4: "Higher than in the daytime",
+        answerNr: 1
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "Extra weight like a passenger or baggage will affect...?",
+        option1: "Braking distance",
+        option2: "Acceleration speed",
+        option3: "Handling",
+        option4: "All of these things",
+        answerNr: 4
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "Incorrect tire pressures will effect...?",
+        option1: "Tire wear",
+        option2: "All of these",
+        option3: "Braking distance",
+        option4: "Handling",
+        answerNr: 2
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "Roughly how many kilometres of riding should you have under your belt before you have enough experience to carry a passenger/heavy baggage?",
+        option1: "1500 km",
+        option2: "1000 km",
+        option3: "500 km",
+        option4: "2500 km",
+        answerNr: 4
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "When loading baggage, as much as possible you should try to keep it...?",
+        option1: "Low and central",
+        option2: "Low and to the rear",
+        option3: "High and forwards",
+        option4: "High and central",
+        answerNr: 1
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "When you're trying out a helmet in a store, how long is it recommended you should wear it for to check it remains properly adjusted without causing discomfort?",
+        option1: "20 minutes",
+        option2: "15 minutes",
+        option3: "10 minutes",
+        option4: "5 minutes",
+        answerNr: 1
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "Which of these drugs will most seriously affect your riding?",
+        option1: "Any of them, depending on the drug",
+        option2: "Prescription drugs",
+        option3: "Illegal drugs",
+        option4: "Over-the counter drugs",
+        answerNr: 1
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "The best way to secure a load to your motorcycle is to use...?",
+        option1: "Rope",
+        option2: "Twine",
+        option3: "Chain",
+        option4: "Bungee cords",
+        answerNr: 4
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "Wearing eye protection is mandatory for motorcycling in 36 American states and in which Canadian province?",
+        option1: "Nova Scotia",
+        option2: "Prince Edward Island",
+        option3: "Saskatchewan",
+        option4: "Manitoba",
+        answerNr: 3
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "What is the average safe lifespan of a motorcycle helmet?",
+        option1: "5 to 9 years",
+        option2: "3 to 7 years",
+        option3: "9 to 12 years",
+        option4: "2 to 5 years",
+        answerNr: 2
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "Your motorcycle footwear should ideally give protection as high as...?",
+        option1: "The patella",
+        option2: "The tibia",
+        option3: "The tarsals",
+        option4: "The femur",
+        answerNr: 2
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "If you're about to hit a pothole, the best place to put your weight is...?",
+        option1: "To the right",
+        option2: "To the left",
+        option3: "To the front",
+        option4: "To the rear",
+        answerNr: 4
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "Which of these is not a good colour for visibility for a motorcycle helmet?",
+        option1: "Navy blue",
+        option2: "White",
+        option3: "Yellow",
+        option4: "Orange",
+        answerNr: 1
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "Motorcycle gloves should cover at least...?",
+        option1: "Your whole hand",
+        option2: "Your whole hand and wrist",
+        option3: "The palm of your hand",
+        option4: "Your finger up to the second joint",
+        answerNr: 2
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "A good way of drying off your brakes in constant rain is to...?",
+        option1: "Gently apply the brakes",
+        option2: "Make jerky stop start progress",
+        option3: "Lean the motorcycle from side to side",
+        option4: "Stop regularly to wipe them with a cloth",
+        answerNr: 1
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "Which of these should make you think about leaving your motorcycle home?",
+        option1: "Feeling angry",
+        option2: "Feeling stressed",
+        option3: "All of them",
+        option4: "Feeling fatigued",
+        answerNr: 3
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "When riding at night you should avoid...?",
+        option1: "Looking directly at other vehicles",
+        option2: "Using your high beam headlights",
+        option3: "Wearing tinted lenses",
+        option4: "All of these things",
+        answerNr: 4
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "To have an abrasion resistance of 2.5 seconds in an accident, leather gloves need to be...?",
+        option1: "0.5 mm thick",
+        option2: "0.7 mm thick",
+        option3: "1.2 mm thick",
+        option4: "0.9 mm thick",
+        answerNr: 4
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "Which of these items is it safe to leave off if you're going for a slow ride in hot sunny weather?",
+        option1: "Helmet",
+        option2: "Jacket",
+        option3: "Gloves",
+        option4: "None of them",
+        answerNr: 4
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "Protective gear may become a hazard in high winds if it is...?",
+        option1: "Not nylon",
+        option2: "Too tight",
+        option3: "Not leather",
+        option4: "Too big for you",
+        answerNr: 4
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "If your helmet has experienced a heavy impact or been in an accident, what should you do?",
+        option1: "Only use it for passengers",
+        option2: "Replace it",
+        option3: "Wrap it with tape",
+        option4: "Visually examine it",
+        answerNr: 2
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "As well as having front and rear lights and turn signals, your motorcycle should have a light for...?",
+        option1: "The clutch",
+        option2: "The rear brake lever",
+        option3: "The license plate",
+        option4: "The ignition switch",
+        answerNr: 3
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "Which of these can act against the effects of drinking alcohol when riding?",
+        option1: "None of them",
+        option2: "A cold shower",
+        option3: "Black coffee",
+        option4: "An energy drink",
+        answerNr: 1
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "When crossing a dirt or gravel road, you should try to ride...?",
+        option1: "Aggressively",
+        option2: "Smoothly",
+        option3: "Speedily",
+        option4: "Timidly",
+        answerNr: 2
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "Which of these visors should you avoid for your motorcycle helmet?",
+        option1: "Tinted",
+        option2: "Coloured",
+        option3: "Iridescent",
+        option4: "All of them",
+        answerNr: 4
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "Which of these is the only one you don't have to check/adjust when carrying a passenger or baggage?",
+        option1: "Headlight",
+        option2: "Tire pressure",
+        option3: "Suspension",
+        option4: "Brake light",
+        answerNr: 4
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "Roads can be particularly slippery...?",
+        option1: "At the beginning of a rain shower",
+        option2: "As rain starts to ease off",
+        option3: "After half an hour of rain",
+        option4: "As pavement starts to dry out after rain",
+        answerNr: 1
       },
       {
-        question: "",
-        option1: "",
-        option2: "",
-        option3: "",
-        option4: "",
-        answerNr: 0
+        question: "Your physical and mental performance declines sharply after you have been awake for...?",
+        option1: "17 hours",
+        option2: "19 hours",
+        option3: "21 hours",
+        option4: "15 hours",
+        answerNr: 1
       }
     ]),
   };
