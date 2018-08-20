@@ -79,6 +79,7 @@ public class TestActivity extends MutualMenu {
 
         // get and store email and api response string from starting screen activity
         email = getIntent().getStringExtra("email");
+        score = 0;
         strResponse = getIntent().getStringExtra("strResponse");
 
         // binding elements-variables
@@ -246,7 +247,7 @@ public class TestActivity extends MutualMenu {
 
     private void finishTest() {
         dbHelper.addParticipant(new Participant(email, score));
-        sendEmailToParticipant();
+        // sendEmailToParticipant();
         finish();
     }
 
@@ -257,6 +258,7 @@ public class TestActivity extends MutualMenu {
     }
 
     private void sendEmailToParticipant() {
+        /*
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setData(Uri.parse("mailto:"));
         intent.setType("text/plain");
@@ -264,6 +266,8 @@ public class TestActivity extends MutualMenu {
         intent.putExtra(Intent.EXTRA_SUBJECT, "Result on 6RTest");
         intent.putExtra(Intent.EXTRA_TEXT, "You scored " + score + " on 6RTest app.\nThank you for participating!!");
         startActivity(Intent.createChooser(intent, "Choose an Email client :"));
+        */
+
     }
 
     public void setUpQuestionList(String strResponse) {
@@ -310,5 +314,10 @@ public class TestActivity extends MutualMenu {
         if (countDownTimer != null) {
             countDownTimer.cancel();
         }
+
+        if (dbHelper != null) {
+            dbHelper.close();
+        }
+
     }
 }

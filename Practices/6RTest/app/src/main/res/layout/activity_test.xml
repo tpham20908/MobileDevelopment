@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/bodyTextColor"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:text="Welcome: "/>
 
     <TextView
@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/bodyTextColor"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:layout_below="@id/tv_email"
         android:freezesText="true"
         android:text="@string/score"/>
@@ -30,7 +30,7 @@
         android:id="@+id/tv_question_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textColor="@color/bodyTextColor"
         android:text="@string/question_count"
         android:layout_below="@id/tv_score"
@@ -51,7 +51,7 @@
         android:id="@+id/tv_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="19sp"
+        android:textSize="17sp"
         android:text="Question will be here \n Question will be here"
         android:textColor="@color/colorAccent"
         android:layout_marginBottom="16dp"
@@ -67,7 +67,7 @@
             android:id="@+id/radio_btn1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textColor="@color/colorAccent"
             android:text="Option 1"
             android:freezesText="true"/>
@@ -75,7 +75,7 @@
             android:id="@+id/radio_btn2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textColor="@color/colorAccent"
             android:text="Option 1"
             android:freezesText="true"/>
@@ -83,7 +83,7 @@
             android:id="@+id/radio_btn3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textColor="@color/colorAccent"
             android:text="Option 1"
             android:freezesText="true"/>
@@ -91,7 +91,7 @@
             android:id="@+id/radio_btn4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textColor="@color/colorAccent"
             android:text="Option 1"
             android:freezesText="true"/>
@@ -101,7 +101,7 @@
         android:id="@+id/btn_confirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:layout_below="@id/radio_group"
         android:layout_marginTop="24dp"
         android:text="Confirm"
@@ -114,7 +114,7 @@
         android:id="@+id/btn_quit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:layout_below="@id/btn_confirm"
         android:layout_marginTop="16dp"
         android:text="Exit"
