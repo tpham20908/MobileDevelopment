@@ -47,8 +47,8 @@ public class DbHelper extends SQLiteOpenHelper {
 
         db.execSQL(SQL_CREATE_QUESTIONS_TABLE);
         db.execSQL(SQL_CREATE_PARTICIPANTS_TABLE);
-        fillQuestionsTable();
-        fillParticipant();
+        //fillQuestionsTable();
+        //fillParticipant();
     }
 
     @Override

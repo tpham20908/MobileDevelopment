@@ -5,6 +5,7 @@ module.exports.hello = async (event, context) => {
     statusCode: 200,
     body: JSON.stringify({
       message: 'Version 1.0',
+      author: "Tung Pham - IPD12"
     }),
   };
 

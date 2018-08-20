@@ -4,4 +4,6 @@
     <string name="dummyText">
         Resource API: https://jsonplaceholder.typicode.com/todos
     </string>
+    <string name="tv1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut orci eros, feugiat in ex ut, maximus scelerisque nisi. Sed imperdiet nisi ut efficitur venenatis.</string>
+    <string name="tv2">Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam a suscipit nibh. Suspendisse laoreet ipsum ex, quis ultricies ante tempus eu.</string>
 </resources>

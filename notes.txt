@@ -9,3 +9,6 @@ main-activity: FrameLayout - RecyclerView
 
 
 AWS Lambda: https://www.youtube.com/watch?v=71cd5XerKss
+
+Sending email:
+https://stackoverflow.com/questions/2020088/sending-email-in-android-using-javamail-api-without-using-the-default-built-in-a/2033124#2033124
