@@ -41,14 +41,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void sendResultsEmail() {
 
-        final String userName = "lechateau20908@gmail.com";
-        final String password = "Montreal2014";
+        final String userName = "myemail@gmail.com";
+        final String password = "mypassword";
         try {
             GMailSender sender = new GMailSender(userName, password);
             sender.sendMail("This is Subject",
                     "This is Body",
                     userName,
-                    "pthanhtung@ymail.com");
+                    "receiver@yahoo.com");
         } catch (Exception e) {
             Log.e("SendMail", e.getMessage(), e);
         }
