@@ -2,18 +2,66 @@ package com.example.a1796137.about;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
+    //Declaring EditText
+    private EditText editTextEmail;
+    private EditText editTextSubject;
+    private EditText editTextMessage;
+
+    //Send button
+    private Button buttonSend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Initializing the views
+        editTextEmail = (EditText) findViewById(R.id.editTextEmail);
+        editTextSubject = (EditText) findViewById(R.id.editTextSubject);
+        editTextMessage = (EditText) findViewById(R.id.editTextMessage);
+
+        buttonSend = (Button) findViewById(R.id.buttonSend);
+    }
+
+    public void sendEmail(View v) {
+        new EmailTask().execute();
+    }
+
+    public void sendResultsEmail() {
+
+        final String userName = "lechateau20908@gmail.com";
+        final String password = "Montreal2014";
+        try {
+            GMailSender sender = new GMailSender(userName, password);
+            sender.sendMail("This is Subject",
+                    "This is Body",
+                    userName,
+                    "pthanhtung@ymail.com");
+        } catch (Exception e) {
+            Log.e("SendMail", e.getMessage(), e);
+        }
+    }
+
+    private class EmailTask extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            sendResultsEmail();
+            return null;
+        }
+
     }
 
     @Override
