@@ -107,7 +107,7 @@ public class TestActivity extends MutualMenu {
         if (savedInstanceState == null) {
             setUpQuestionList(strResponse);
             Collections.shuffle(questionList);
-            questionList = new ArrayList<>(questionList.subList(0, NUMBER_OF_QUESTION));
+            //questionList = new ArrayList<>(questionList.subList(0, NUMBER_OF_QUESTION));
             questionCountTotal = questionList.size();
             showNextQuestion();
         } else {
@@ -318,6 +318,5 @@ public class TestActivity extends MutualMenu {
         if (dbHelper != null) {
             dbHelper.close();
         }
-
     }
 }

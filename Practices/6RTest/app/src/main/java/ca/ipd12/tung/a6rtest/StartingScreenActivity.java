@@ -11,6 +11,7 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
+import android.widget.AdapterView.OnItemSelectedListener;
 
 public class StartingScreenActivity extends MutualMenu {
     String strResponse;
@@ -41,7 +43,6 @@ public class StartingScreenActivity extends MutualMenu {
 
         fetchDataFromApi.execute(apiUrl);
     }
-
     public void startingTest(View view) {
         EditText etEmail = findViewById(R.id.email_input);
         String email = etEmail.getText() + "";
@@ -61,7 +62,7 @@ public class StartingScreenActivity extends MutualMenu {
 
     public void goToTest(String email) {
         Intent testActivity = new Intent(StartingScreenActivity.this, TestActivity.class);
-        testActivity.putExtra("email", email);
+        // testActivity.putExtra("email", email);
         testActivity.putExtra("strResponse", strResponse);
         startActivity(testActivity);
     }
